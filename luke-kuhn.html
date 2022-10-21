@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Ledger</title>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <!-- normalize css -->
+    <link rel="stylesheet" href="./normalize.css" />
+    <!-- main css -->
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- single matchup -->
+      <article class="matchup-header">
+        <a href="index.html" class="back-arrow">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
+
+        <div class="luke-kuhn">
+          <h4>luke: <span class="games-luke-kuhn-span">3</span></h4>
+        </div>
+        <div class="kuhn-luke">
+          <h4>kuhn: <span class="games-kuhn-luke-span">1</span></h4>
+        </div>
+      </article>
+      <!-- end of single matchcup -->
+    </header>
+    <!-- points visualization -->
+    <section>
+      <div class="circle-center">
+        <div class="circle">
+          <div class="needle"></div>
+          <div class="points points-luke-kuhn points-left">
+            <span class="player1-points-won">110</span>
+            <span class="player1-percent-won">60%</span>
+          </div>
+          <div class="points points-kuhn-luke points-right">
+            <span class="player2-points-won">92</span>
+            <span class="player2-percent-won">40%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- score display and entry -->
+    <section>
+      <div class="score-center">
+        <div class="prev-score">
+          <h5>
+            <i class="fa-solid fa-arrow-left game-decrease"></i> game
+            <span class="prev-game-num">9</span
+            ><i class="fa-solid fa-arrow-right game-increase"></i>
+          </h5>
+          <h5>luke <span class="player1-prev-game-score">11</span></h5>
+          <h5>kuhn <span class="player2-prev-game-score">8</span></h5>
+        </div>
+        <div class="add-score">
+          <form>
+            <h5>game <span class="current-game-num-span">10</span></h5>
+            <!-- add luke's score -->
+            <div class="form-control">
+              <label for="add-score-luke-kuhn">
+                <h5>Luke</h5>
+              </label>
+              <input
+                type="number"
+                name="add-score-luke-kuhn"
+                id="input-luke-kuhn"
+              />
+            </div>
+            <!-- add kuhn's score -->
+            <div class="form-control">
+              <label for="add-score-kuhn-luke">
+                <h5>Kuhn</h5>
+              </label>
+              <input
+                type="number"
+                name="add-score-kuhn-luke"
+                id="input-kuhn-luke"
+              />
+            </div>
+            <button type="button" class="btn" id="btnAddScore">
+              add score
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- navigate matchups -->
+    <footer>
+      <div class="footer-center">
+        <i class="matchup-decrease fa-solid fa-chevron-left"></i>
+        <i class="matchup-increase fa-solid fa-chevron-right"></i>
+      </div>
+    </footer>
+    <script src="./app.js"></script>
+  </body>
+</html>
