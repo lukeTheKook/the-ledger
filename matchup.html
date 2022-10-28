@@ -24,11 +24,17 @@
           <i class="fa-solid fa-arrow-left"></i>
         </a>
 
-        <div class="luke-kuhn">
-          <h4>luke: <span class="games-luke-kuhn-span">3</span></h4>
+        <div class="player1">
+          <h4>
+            <span class="player1NameSpan">luke:</span>
+            <span class="games-won-player1-span">3</span>
+          </h4>
         </div>
-        <div class="kuhn-luke">
-          <h4>kuhn: <span class="games-kuhn-luke-span">1</span></h4>
+        <div class="player2">
+          <h4>
+            <span class="player2NameSpan">kuhn:</span>
+            <span class="games-won-player2-span">1</span>
+          </h4>
         </div>
       </article>
       <!-- end of single matchcup -->
@@ -38,11 +44,11 @@
       <div class="circle-center">
         <div class="circle">
           <div class="needle"></div>
-          <div class="points points-luke-kuhn points-left">
+          <div class="points points-player1 points-left">
             <span class="player1-points-won">110</span>
             <span class="player1-percent-won">60%</span>
           </div>
-          <div class="points points-kuhn-luke points-right">
+          <div class="points points-player2 points-right">
             <span class="player2-points-won">92</span>
             <span class="player2-percent-won">40%</span>
           </div>
@@ -58,35 +64,41 @@
             <span class="prev-game-num">9</span
             ><i class="fa-solid fa-arrow-right game-increase"></i>
           </h5>
-          <h5>luke <span class="player1-prev-game-score">11</span></h5>
-          <h5>kuhn <span class="player2-prev-game-score">8</span></h5>
+          <h5>
+            <span class="player1NameSpan">luke:</span>
+            <span class="player1-prev-game-score">11</span>
+          </h5>
+          <h5>
+            <span class="player2NameSpan">kuhn:</span>
+            <span class="player2-prev-game-score">8</span>
+          </h5>
         </div>
         <div class="add-score">
           <form>
             <h5>game <span class="current-game-num-span">10</span></h5>
-            <!-- add luke's score -->
+            <!-- add player1 score -->
             <div class="form-control">
-              <label for="add-score-luke-kuhn">
-                <h5>Luke</h5>
+              <label for="add-score-player1">
+                <h5><span class="player1NameSpan">luke:</span></h5>
               </label>
               <input
                 type="number"
-                name="add-score-luke-kuhn"
-                id="input-luke-kuhn"
+                name="add-score-player1"
+                id="input-player1"
               />
             </div>
-            <!-- add kuhn's score -->
+            <!-- add player2 score -->
             <div class="form-control">
-              <label for="add-score-kuhn-luke">
-                <h5>Kuhn</h5>
+              <label for="add-score-player2">
+                <h5><span class="player2NameSpan">kuhn:</span></h5>
               </label>
               <input
                 type="number"
-                name="add-score-kuhn-luke"
-                id="input-kuhn-luke"
+                name="add-score-player2"
+                id="input-player2"
               />
             </div>
-            <button type="button" class="btn" id="btnAddScore">
+            <button type="submit" class="btn" id="btnAddScore">
               add score
             </button>
           </form>
@@ -100,6 +112,6 @@
         <i class="matchup-increase fa-solid fa-chevron-right"></i>
       </div>
     </footer>
-    <script src="./app.js"></script>
+    <script type="module" src="./pages/matchup.js"></script>
   </body>
 </html>

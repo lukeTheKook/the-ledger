@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Ledger</title>
+    <title>The Ledger.</title>
     <!-- font awesome -->
     <link
       rel="stylesheet"
@@ -23,39 +23,40 @@
         <div class="title-underline"></div>
       </div>
       <!-- Matchups -->
-      <section class="matchups">
-        <!-- single matchup -->
-        <article class="matchup" onclick="location.href='luke-kuhn.html'">
-          <div class="luke-kuhn">
-            <h4>luke: <span class="games-luke-kuhn-span">3</span></h4>
-          </div>
-          <div class="kuhn-luke">
-            <h4>kuhn: <span class="games-kuhn-luke-span">1</span></h4>
-          </div>
-        </article>
-        <!-- end of single matchcup -->
-        <!-- single matchup -->
-        <article class="matchup">
-          <div class="tom-kuhn">
-            <h4>tom: <span>0</span></h4>
-          </div>
-          <div class="kuhn-tom">
-            <h4>kuhn: <span>0</span></h4>
-          </div>
-        </article>
-        <!-- end of single matchcup -->
-        <!-- single matchup -->
-        <article class="matchup">
-          <div class="kelly-kuhn">
-            <h4>kelly: <span>0</span></h4>
-          </div>
-          <div class="kuhn-kelly">
-            <h4>kuhn: <span>0</span></h4>
-          </div>
-        </article>
-        <!-- end of single matchcup -->
+      <section class="matchups"></section>
+      <!-- Add Matchup Modal -->
+      <section class="new-matchup">
+        <i class="fa-solid fa-plus new-matchup-icon"></i>
       </section>
+      <aside class="new-matchup-modal-overlay">
+        <div class="new-matchup-modal">
+          <i class="fa-solid fa-x close-modal"></i>
+          <form>
+            <div class="new-matchup-inputs">
+              <div class="new-matchup-input">
+                <label for="new-player1-name">Player 1</label>
+                <input
+                  type="text"
+                  name="new-player1-name"
+                  class="new-player1-name"
+                />
+              </div>
+              <div class="new-matchup-input">
+                <label for="new-player2-name">Player 2</label>
+                <input
+                  type="text"
+                  name="new-player2-name"
+                  class="new-player2-name"
+                />
+              </div>
+            </div>
+            <button type="submit" class="btn add-matchup-btn">
+              add matchup
+            </button>
+          </form>
+        </div>
+      </aside>
     </main>
-    <script src="./app.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
