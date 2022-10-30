@@ -46,12 +46,15 @@ export const gameHistory = () => {
   const player2PrevScoreSpan = document.querySelector(
     ".player2-prev-game-score"
   );
+  const editOverlay = document.querySelector(".edit-overlay");
+  const currentGameNumSpan = document.querySelector(".current-game-num-span");
+  const lastSubmit = parseInt(currentGameNumSpan.textContent);
+
   let prevGameNum;
   let player1PrevScore;
   let player2PrevScore;
 
   if (scores.length > 0) {
-    console.log("ffoo");
     prevGameNum = scores.length;
     displayHistory();
   } else {
@@ -63,7 +66,7 @@ export const gameHistory = () => {
     player2PrevScoreSpan.textContent = player2PrevScore;
   }
   // Current Game number
-  const currentGameNumSpan = document.querySelector(".current-game-num-span");
+
   currentGameNumSpan.textContent = prevGameNum + 1;
 
   function displayHistory() {
@@ -82,6 +85,10 @@ export const gameHistory = () => {
       player2PrevScoreSpan.classList.add("winner");
       player1PrevScoreSpan.classList.remove("winner");
     }
+    if (player1PrevScore === player2PrevScore) {
+      player1PrevScoreSpan.classList.remove("winner");
+      player2PrevScoreSpan.classList.remove("winner");
+    }
   }
   // navigate games
   const gameNumIncreaseIcon = document.querySelector(".game-increase");
@@ -99,6 +106,13 @@ export const gameHistory = () => {
     } else prevGameNum = scores.length;
     displayHistory();
   });
+  // display recent edit
+  if (editOverlay.classList.contains("show-edit-overlay")) {
+    console.log(lastSubmit);
+    prevGameNum = lastSubmit;
+    displayHistory();
+    editOverlay.classList.remove("show-edit-overlay");
+  }
 };
 // navigate Matchups
 export const decreaseMatchup = () => {
@@ -138,17 +152,41 @@ export const handleInput = () => {
   const urlID = parseInt(window.location.search.slice(4));
 
   const { id, player1, player2, scores } = data.find(({ id }) => id === urlID);
+
   const player1Input = parseInt(document.querySelector("#input-player1").value);
   const player2Input = parseInt(document.querySelector("#input-player2").value);
 
-  console.log([player1Input, player2Input]);
-  const newScores = [...scores, [player1Input, player2Input]];
-  const newMatchupData = { id, player1, player2, scores: newScores };
-  const newData = data.map((matchup) => {
-    if (matchup.id === id) {
-      return newMatchupData;
-    } else return matchup;
-  });
+  const editOverlay = document.querySelector(".edit-overlay");
+  if (!editOverlay.classList.contains("show-edit-overlay")) {
+    const newScores = [...scores, [player1Input, player2Input]];
+    const newMatchupData = { id, player1, player2, scores: newScores };
+    const newData = data.map((matchup) => {
+      if (matchup.id === id) {
+        return newMatchupData;
+      } else return matchup;
+    });
 
-  localStorage.setItem("ledgerData", JSON.stringify(newData));
+    localStorage.setItem("ledgerData", JSON.stringify(newData));
+  }
+  if (editOverlay.classList.contains("show-edit-overlay")) {
+    const prevGameNum = parseInt(
+      document.querySelector(".prev-game-num").textContent
+    );
+    const newScores = scores.map((score, index) => {
+      if (index === prevGameNum - 1) {
+        return [player1Input, player2Input];
+      } else return score;
+    });
+
+    const newMatchupData = { id, player1, player2, scores: newScores };
+    const newData = data.map((matchup) => {
+      if (matchup.id === id) {
+        return newMatchupData;
+      } else return matchup;
+    });
+
+    localStorage.setItem("ledgerData", JSON.stringify(newData));
+  }
+  document.querySelector("#input-player1").value = null;
+  document.querySelector("#input-player2").value = null;
 };

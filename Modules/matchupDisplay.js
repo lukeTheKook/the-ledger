@@ -31,3 +31,25 @@ export const displayGamesWon = () => {
   gamesWonPlayer1Span.textContent = gamesWon[0];
   gamesWonPlayer2Span.textContent = gamesWon[1];
 };
+// edit
+export const displayEdit = () => {
+  const data = getData();
+  const urlID = parseInt(window.location.search.slice(4));
+
+  const { id, player1, player2, scores } = data.find(({ id }) => id === urlID);
+
+  const prevGameNum = parseInt(
+    document.querySelector(".prev-game-num").textContent
+  );
+  const currentGameScores = scores[prevGameNum - 1];
+
+  const editOverlay = document.querySelector(".edit-overlay");
+  editOverlay.classList.add("show-edit-overlay");
+
+  const currentGameNumSpan = document.querySelector(".current-game-num-span");
+  const player1Input = document.querySelector("#input-player1");
+  const player2Input = document.querySelector("#input-player2");
+  currentGameNumSpan.textContent = prevGameNum;
+  player1Input.value = currentGameScores[0];
+  player2Input.value = currentGameScores[1];
+};
