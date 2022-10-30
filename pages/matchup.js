@@ -2,6 +2,7 @@ import { getData } from "../Modules/data.js";
 import {
   displayPlayerNames,
   displayGamesWon,
+  displayEdit,
 } from "../Modules/matchupDisplay.js";
 import {
   calculateGamesWon,
@@ -40,3 +41,10 @@ const matchupIncreaseIcon = document.querySelector(".matchup-increase");
 
 matchupDecreaseIcon.addEventListener("click", decreaseMatchup);
 matchupIncreaseIcon.addEventListener("click", increaseMatchup);
+
+// edit
+const editIcon = document.querySelector(".edit-icon");
+
+editIcon.addEventListener("click", () => {
+  displayEdit();
+});
